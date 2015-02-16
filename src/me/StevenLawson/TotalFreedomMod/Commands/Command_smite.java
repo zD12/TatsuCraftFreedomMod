@@ -42,7 +42,7 @@ public class Command_smite extends TFM_Command
         {
             smite(player);
             BarAPI.setMessage(sender_p, ChatColor.RED + "" + ChatColor.BOLD + "You forgot the smite reason, don't forget next time!", 120);
-            TFM_Util.playerMsg(sender, "I made smite reasons for a reason, use them please!", ChatColor.RED);
+            // TFM_Util.playerMsg(sender, "I made smite reasons for a reason, use them please!", ChatColor.RED);
             server.dispatchCommand(sender, "kill " + sender_p);
         }
 
@@ -51,9 +51,10 @@ public class Command_smite extends TFM_Command
 
     public static void smite(final Player player, final String reason)
     {
-        TFM_Util.bcastMsg(String.format("%s has been a naughty, naughty person.\nThey have thus been smitten!\n" + ChatColor.YELLOW + "Reason: %s", player.getName(), reason), ChatColor.RED);
+        TFM_Util.bcastMsg(String.format("%s has been a naughty, naughty person.\nThey have thus been smitten!\n" ChatColor.RED);
         String full = String.format(ChatColor.RED + "%s They have been punished! %s", player.getName(), reason);
         BarAPI.setMessage((full.length() <= 64 ? full : String.format("%s has been smitten!", player.getName())), 10);
+        server.dispatchCommand(sender, "say %s" + sender_p)
         
         //Deop
         player.setOp(false);
