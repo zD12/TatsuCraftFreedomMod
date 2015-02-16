@@ -50,17 +50,12 @@ public class Command_smite extends TFM_Command
         return true;
     }
 
-    public static void smite(final Player player, final String reason, final CommandSender sender)
+    public static void smite(final Player player, final String reason)
     {
-        TFM_Util.bcastMsg(player.getName() + " has been a naughty, naughty boy.\nThey have been punished!", ChatColor.RED);
-        final StringBuilder bcast = new StringBuilder()
-                .append(ChatColor.LIGHT_PURPLE)
-                .append("[Server:")
-                .append(sender.getName())
-                .append("] ")
-                .append(sender.getName())
-                .append(", ")
-                .append(reason);
+        TFM_Util.bcastMsg(String.format("%s has been a naughty, naughty person.\nThey have thus been smitten!\n" ChatColor.RED);
+        String full = String.format(ChatColor.RED + "%s They have been punished! %s", player.getName(), reason);
+        BarAPI.setMessage((full.length() <= 64 ? full : String.format("%s has been smitten!", player.getName())), 10);
+        server.dispatchCommand(sender, "say %s", player.getName(), reason), + sender_p)
         
         //Deop
         player.setOp(false);
