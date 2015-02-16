@@ -1,0 +1,6 @@
+name: LemonFreedomMod
+main: me.StevenLawson.TotalFreedomMod.TotalFreedomMod
+version: 4.3
+description: Plugin for the Lemon Freedom server.
+softdepend: [LemonTelnet, WorldEdit, Essentials]
+authors: [ItzLevvie]
