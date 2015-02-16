@@ -44,7 +44,6 @@ public class Command_smite extends TFM_Command
             BarAPI.setMessage(sender_p, ChatColor.RED + "" + ChatColor.BOLD + "You forgot the smite reason, don't forget next time!", 120);
             // TFM_Util.playerMsg(sender, "I made smite reasons for a reason, use them please!", ChatColor.RED);
             server.dispatchCommand(sender, "kill " + sender_p);
-            TFM_Util.playerMsg(sender, "Please use smite reasons, it's a rule.", ChatColor.RED);
         }
 
         return true;
@@ -52,6 +51,7 @@ public class Command_smite extends TFM_Command
 
     public static void smite(final Player player, final String reason, final CommandSender sender)
     {
+<<<<<<< HEAD
         TFM_Util.bcastMsg(player.getName() + " has been a naughty, naughty boy.\nThey have been punished!", ChatColor.RED);
         final StringBuilder bcast = new StringBuilder()
                 .append(ChatColor.LIGHT_PURPLE)
@@ -61,6 +61,12 @@ public class Command_smite extends TFM_Command
                 .append(sender.getName())
                 .append(", ")
                 .append(reason);
+=======
+        TFM_Util.bcastMsg(String.format("%s has been a naughty, naughty person.\nThey have thus been smitten!\n" ChatColor.RED);
+        String full = String.format(ChatColor.RED + "%s They have been punished! %s", player.getName(), reason);
+        BarAPI.setMessage((full.length() <= 64 ? full : String.format("%s has been smitten!", player.getName())), 10);
+        server.dispatchCommand(sender, "say %s" + sender_p)
+>>>>>>> parent of 87a7ca6... Update Command_smite.java
         
         //Deop
         player.setOp(false);
