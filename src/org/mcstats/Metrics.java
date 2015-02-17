@@ -31,7 +31,7 @@ public class Metrics
 {
     private final static int REVISION = 7;
     private static final String BASE_URL = "http://report.mcstats.org";
-    private static final String REPORT_URL = "/plugin/LemonFreedomMod";
+    private static final String REPORT_URL = "/plugin/TCFFreedomMod";
     private static final int PING_INTERVAL = 15;
     private final Plugin plugin;
     private final Set<Graph> graphs = Collections.synchronizedSet(new HashSet<Graph>());
