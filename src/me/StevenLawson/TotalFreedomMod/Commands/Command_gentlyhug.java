@@ -7,7 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 @CommandPermissions(level = AdminLevel.ALL, source = SourceType.ONLY_IN_GAME)
-@CommandParameters(description = "Gently hug those who you love :).", usage = "/<command> <player>", aliases = "thug")
+@CommandParameters(description = "Gently hug those who you love :).", usage = "/<command> <player>", aliases = "ghug")
 public class Command_gentlyhug extends TFM_Command
 {
 @Override
