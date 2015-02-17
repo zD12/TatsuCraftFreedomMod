@@ -14,6 +14,7 @@ import java.util.Properties;
 import me.StevenLawson.TotalFreedomMod.Commands.TFM_CommandLoader;
 import me.StevenLawson.TotalFreedomMod.HTTPD.TFM_HTTPD_Manager;
 import me.StevenLawson.TotalFreedomMod.Listener.*;
+import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -35,6 +36,7 @@ public class TotalFreedomMod extends JavaPlugin
     public static final String PROTECTED_AREA_FILENAME = "protectedareas.dat";
     public static final String SAVED_FLAGS_FILENAME = "savedflags.dat";
     public static final String YOU_ARE_NOT_OP = me.StevenLawson.TotalFreedomMod.Commands.TFM_Command.YOU_ARE_NOT_OP;
+    public static final String PLAYER_NOT_FOUND = ChatColor.GRAY + "Player not found!";
     public static String buildNumber = "1";
     public static String buildDate = TotalFreedomMod.buildDate = TFM_Util.dateToString(new Date());
     public static String buildCreator = "ItzLevvie";
