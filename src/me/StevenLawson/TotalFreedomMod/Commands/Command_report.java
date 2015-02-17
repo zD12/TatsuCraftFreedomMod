@@ -1,9 +1,10 @@
 package me.StevenLawson.TotalFreedomMod.Commands;
 
 import me.StevenLawson.TotalFreedomMod.TFM_AdminList;
-import me.StevenLawson.TotalFreedomMod.TFM_Util;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
+import me.StevenLawson.TotalFreedomMod.TotalFreedomMod;
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -25,13 +26,13 @@ public class Command_report extends TFM_Command
 
         if (player == null)
         {
-            playerMsg(PLAYER_NOT_FOUND);
+            playerMsg(TotalFreedomMod.PLAYER_NOT_FOUND);
             return true;
         }
 
         if (sender instanceof Player)
         {
-            if (player.equals(sender_p))
+            if (player == (Player) sender)
             {
                 playerMsg(ChatColor.RED + "Please, don't try to report yourself.");
                 return true;
@@ -40,14 +41,23 @@ public class Command_report extends TFM_Command
 
         if (TFM_AdminList.isSuperAdmin(player))
         {
-            playerMsg(ChatColor.RED + "You can not report an admin.");
+            playerMsg(ChatColor.RED + "You may not report " + player.getName() + ", they are an admin.");
             return true;
         }
 
+        String reported = player.getName();
+        String reporter = sender.getName();
         String report = StringUtils.join(ArrayUtils.subarray(args, 1, args.length), " ");
-        TFM_Util.reportAction(sender_p, player, report);
 
-        playerMsg(ChatColor.GREEN + "Thank you, your report has been successfully logged.");
+        sender.sendMessage(ChatColor.GREEN + "Thank you, your report has been successfully logged.");
+
+        for (Player p : Bukkit.getOnlinePlayers())
+        {
+            if (TFM_AdminList.isSuperAdmin(p))
+            {
+                p.sendMessage(ChatColor.RED + "[REPORTS] " + ChatColor.GOLD + reporter + " has reported " + reported + " for " + report);
+            }
+        }
 
         return true;
     }
