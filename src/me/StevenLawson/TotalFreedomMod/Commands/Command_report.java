@@ -13,45 +13,42 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Report a player for admins to see.", usage = "/<command> <player> <reason>")
 public class Command_report extends TFM_Command
 {
-@Override
-public boolean run(CommandSender sender, Player sender_p, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
-{
+    @Override
+    public boolean run(CommandSender sender, Player sender_p, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
+    {
+        if (args.length < 2)
+        {
+            return false;
+        }
 
-if (args.length < 2)
-{
+        Player player = getPlayer(args[0]);
 
-return false;
-}
+        if (player == null)
+        {
+            playerMsg(PLAYER_NOT_FOUND);
+            return true;
+        }
 
-Player player = getPlayer(args[0]);
-if (player == null)
-{
+        if (sender instanceof Player)
+        {
+            if (player.equals(sender_p))
+            {
+                playerMsg(ChatColor.RED + "Please, don't try to report yourself.");
+                return true;
+            }
+        }
 
-playerMsg(PLAYER_NOT_FOUND);
-return true;
-}
+        if (TFM_AdminList.isSuperAdmin(player))
+        {
+            playerMsg(ChatColor.RED + "You can not report an admin.");
+            return true;
+        }
 
-if (sender instanceof Player)
-{
+        String report = StringUtils.join(ArrayUtils.subarray(args, 1, args.length), " ");
+        TFM_Util.reportAction(sender_p, player, report);
 
-if (player.equals(sender_p))
-{
+        playerMsg(ChatColor.GREEN + "Thank you, your report has been successfully logged.");
 
-playerMsg(ChatColor.RED + "Please, don't try to report yourself.");
-return true;
-}
-
-}
-if (TFM_AdminList.isSuperAdmin(player))
-{
-
-playerMsg(ChatColor.RED + "You can not report an admin.");
-return true;
-}
-String report = StringUtils.join(ArrayUtils.subarray(args, 1, args.length), " ");
-TFM_Util.reportAction(sender_p, player, report);
-playerMsg(ChatColor.GREEN + "Thank you, your report has been successfully logged.");
-return true;
-}
-
+        return true;
+    }
 }
