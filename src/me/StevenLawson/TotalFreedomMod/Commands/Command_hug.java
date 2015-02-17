@@ -25,9 +25,9 @@ if(target == null)
 sender.sendMessage("The player " + args[0] + " is not online...");
 return true;
 }
-sender_p.sendMessage(ChatColor.RED +"You huggle " + target.getName() + " AWWWWWW.");
-target.sendMessage(ChatColor.RED +sender_p.getName() + " huggles you, AWWWWWW.");
-TFM_Util.bcastMsg(ChatColor.RED + sender_p.getName() + " has hugged " + target.getName());
+sender_p.sendMessage(ChatColor.RED +"You huggle " + target.getName() + " Awwwwww <3");
+target.sendMessage(ChatColor.RED +sender.getName() + " huggles you, Awwwwww <3");
+TFM_Util.bcastMsg(ChatColor.RED + sender.getName() + " has hugged " + target.getName() + "! Awwwww <3");
 sender_p.teleport(target.getLocation().add(1, 0, 0));
 sender_p.getLocation().setYaw(-target.getLocation().getYaw());
 sender_p.getLocation().setPitch(-target.getLocation().getPitch());
