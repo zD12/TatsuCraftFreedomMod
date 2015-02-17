@@ -1,7 +1,6 @@
 package me.StevenLawson.TotalFreedomMod.Commands;
 
 import me.StevenLawson.TotalFreedomMod.TFM_Util;
-import net.camtech.camutils.CUtils_Particle;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -13,7 +12,6 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Hug those who you love :).", usage = "/<command> <player>")
 public class Command_hug extends TFM_Command
 {
-//This requires CamUtils, please download it from http://files.cam-tech.net!
 @Override
 public boolean run(CommandSender sender, Player sender_p, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
 {
@@ -35,8 +33,6 @@ sender_p.getLocation().setYaw(-target.getLocation().getYaw());
 sender_p.getLocation().setPitch(-target.getLocation().getPitch());
 sender_p.playSound(sender_p.getLocation(), Sound.CAT_MEOW, 10, 10);
 target.playSound(target.getLocation(), Sound.CAT_MEOW, 10, 10);
-CUtils_Particle effect = CUtils_Particle.FIREWORK_SPARK;
-CUtils_Particle.sendToLocation(effect, target.getLocation(), 1, 1, 1, 2, 10);
 return true;
 }
 }
